@@ -21,9 +21,11 @@ if ($connexion) {
         if ($password == $resultat->fetch_assoc()['mdpapi']) {
             // Génération d'un token sécurisé
             $token = bin2hex(random_bytes(16));
+            
 
-            // Mise à jour du token dans la base de données
-            $sqlrequest = sprintf("UPDATE users SET cleapi ='%s' WHERE username = '%s'", $token, $username);
+            // Mise à jour du token dans la base de données avec l'ajout automatique du datetime de htoken
+            $sqlrequest = sprintf("UPDATE users SET cleapi ='%s', htoken = now() WHERE username = '%s'", $token, $username);
+    
             mysqli_query($connexion, $sqlrequest);
 
             // Envoi du token encodé en JSON comme réponse

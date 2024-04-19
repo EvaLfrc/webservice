@@ -10,6 +10,11 @@ $ficheid = $_GET['ficheid'];
 $sqlrequest = 'SELECT cleapi FROM users';
 $results = mysqli_query($connexion, $sqlrequest);
 
+// creation d'un trigger ajoutant les données pour le fichier de log 
+// Date_add(htoken+60 minutes);
+// now<Date_add(htoken+60 minutes);
+
+
 // Parcours des résultats pour trouver la correspondance avec le token
 while ($row = $results->fetch_array()) {
     if ($token == $row['cleapi']) {
