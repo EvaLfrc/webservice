@@ -1,6 +1,6 @@
 <?php
 // Connexion à la base de données
-$connexion = mysqli_connect("localhost", "root","0000", "mgsb");
+$connexion = mysqli_connect("localhost", "root", "0000", "mgsb");
 
 // Récupération des paramètres de la requête GET
 $token = $_GET['token'];
